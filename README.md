@@ -1,5 +1,13 @@
 # DB設計
 
+## groupテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+
+### Association
+- has_many :user
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -8,8 +16,7 @@
 |nickname|string|null: false|
 ### Association
 - has_many :tweets
-- has_many :comments
-
+- belongs_to :group
 ## tweetsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -18,17 +25,7 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :comments
 
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|tweet_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :tweet
-- belongs_to :user
 ## groups_usersテーブル
 
 |Column|Type|Options|
@@ -39,3 +36,4 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
+
