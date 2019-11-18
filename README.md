@@ -1,12 +1,12 @@
 # DB設計
 
-## groupテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
+|name|string|null: false|
 
 ### Association
-- has_many :user
+- has_many :users, through: groups_users
 
 ## usersテーブル
 |Column|Type|Options|
@@ -16,8 +16,9 @@
 |nickname|string|null: false|
 ### Association
 - has_many :tweets
-- belongs_to :group
-## tweetsテーブル
+- has_many :groups, through: groups_users
+
+## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|text||
